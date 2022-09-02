@@ -11,7 +11,7 @@ namespace TestEntityFramework.Database.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=localhost;Database=TestEntityFramework;User Id=sa;Password=dr823c1HEE;MultipleActiveResultSets=true;");
+                optionsBuilder.UseSqlServer(@"Server=localhost;Database=TestEntityFramework;User Id=sa;Password=P@ssw0rd;MultipleActiveResultSets=true;");
             }
         }
 
