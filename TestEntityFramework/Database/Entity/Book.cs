@@ -15,6 +15,9 @@ namespace TestEntityFramework.Database.Entity
         public int BookCode { get; set; }
 
         public Guid StudentGUID { get; set; }
+
+        [ForeignKey("StudentGUID")]
+        [InverseProperty("Books")]
         public Student Student { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace TestEntityFramework.Database.Entity
 
         public Home Home { get; set; }
 
+        [InverseProperty("Student")]
         public ICollection<Book> Books { get; set; }
 
         public ICollection<StudentTeacher> StudentTeachers { get; set; }
