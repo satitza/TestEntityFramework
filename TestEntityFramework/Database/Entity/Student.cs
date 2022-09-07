@@ -9,6 +9,13 @@ namespace TestEntityFramework.Database.Entity
     [Table("Student", Schema = "dbo")]
     public class Student
     {
+
+        public Student()
+        {
+            this.Books = new List<Book>();
+            this.StudentTeachers = new List<StudentTeacher>();
+        }
+
         [Key]
         public Guid StudentGUID { get; set; }
 
@@ -20,7 +27,6 @@ namespace TestEntityFramework.Database.Entity
 
         public Home Home { get; set; }
 
-        [InverseProperty("Student")]
         public ICollection<Book> Books { get; set; }
 
         public ICollection<StudentTeacher> StudentTeachers { get; set; }

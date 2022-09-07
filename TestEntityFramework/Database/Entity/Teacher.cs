@@ -8,6 +8,11 @@ namespace TestEntityFramework.Database.Entity
     [Table("Teacher", Schema = "dbo")]
     public class Teacher
     {
+        public Teacher()
+        {
+            this.StudentTeachers = new List<StudentTeacher>();
+        }
+
         [Key]
         public Guid TeacherGUID { get; set; }
 

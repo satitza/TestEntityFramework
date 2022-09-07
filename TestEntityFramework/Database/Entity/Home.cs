@@ -13,6 +13,8 @@ namespace TestEntityFramework.Database.Entity
         public string Address { get; set; }
 
         public Guid StudentGUID { get; set; }
+
+        [ForeignKey("StudentGUID")]
         public Student Student { get; set; }
     }
 }
