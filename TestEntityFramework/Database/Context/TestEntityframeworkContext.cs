@@ -39,7 +39,7 @@ namespace TestEntityFramework.Database.Context
             modelBuilder.Entity<Book>()
                 .HasOne<Student>(s => s.Student)
                 .WithMany(g => g.Books)
-                .HasForeignKey(s => s.BookGUID);
+                .HasForeignKey(s => s.StudentGUID);
 
 
 
