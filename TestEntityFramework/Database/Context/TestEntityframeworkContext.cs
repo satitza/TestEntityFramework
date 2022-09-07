@@ -23,21 +23,38 @@ namespace TestEntityFramework.Database.Context
 
         public virtual DbSet<Teacher> Teachers { get; set; }
 
+        public virtual DbSet<StudentTeacher> StudentTeachers { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // One to one
             modelBuilder.Entity<Student>()
                 .HasOne(a => a.Home)
                 .WithOne(b => b.Student)
                 .HasForeignKey<Home>(b => b.StudentGUID);
 
+
+            // One to many
             modelBuilder.Entity<Book>()
                 .HasOne<Student>(s => s.Student)
                 .WithMany(g => g.Books)
                 .HasForeignKey(s => s.BookGUID);
 
 
+
+            // Many to many
             modelBuilder.Entity<StudentTeacher>().HasKey(sc => new { sc.StudentGUID, sc.TeacherGUID });
+
+            modelBuilder.Entity<StudentTeacher>()
+                .HasOne<Student>(sc => sc.Student)
+                .WithMany(s => s.StudentTeachers)
+                .HasForeignKey(sc => sc.StudentGUID);
+
+            modelBuilder.Entity<StudentTeacher>()
+                .HasOne<Teacher>(sc => sc.Teacher)
+                .WithMany(s => s.StudentTeachers)
+                .HasForeignKey(sc => sc.TeacherGUID);
         }
     }
 }
